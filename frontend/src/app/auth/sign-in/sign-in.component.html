@@ -1,0 +1,40 @@
+<div class="flex justify-center bg-slate-50 h-screen">
+    <mat-card class="flex flex-col mt-40 h-fit w-1/4" [formGroup]="signInForm">
+        <!-- Title -->
+        <div class="mt-8 text-4xl font-extrabold tracking-tight leading-tight">Sign in</div>
+        <div class="flex items-baseline mt-0.5 mb-4 font-medium">
+            <div>Don't have an account?</div>
+            <a class="ml-1 text-primary-500 hover:underline" [routerLink]="['/auth/sign-up']">Sign up
+            </a>
+        </div>
+        <mat-form-field class="w-full" appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput type="text" formControlName="email">
+            <mat-error *ngIf="signInForm.get('email')?.hasError('required')">
+                Email is Required
+            </mat-error>
+            <mat-error *ngIf="signInForm.get('email')?.hasError('email')">
+                Invalid Email Address
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field class="w-full" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="signInForm.get('password')?.hasError('required')">
+                Password is Required
+            </mat-error>
+        </mat-form-field>
+        <div class="inline-flex items-end justify-end w-full mt-1.5 mb-4">
+            <a class="text-md font-medium text-primary-500 hover:underline"
+                [routerLink]="['/auth/forgot-password']">Forgot
+                password?
+            </a>
+        </div>
+        <button mat-flat-button class="w-full h-11" [disabled]="signInForm.invalid" (click)="onSubmit()"
+            color="primary">Sign In</button>
+    </mat-card>
+</div>
