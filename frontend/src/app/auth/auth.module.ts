@@ -11,6 +11,9 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 const routes = [
   {
@@ -20,6 +23,10 @@ const routes = [
   {
     path: 'auth/sign-in',
     component: SignInComponent
+  },
+  {
+    path: 'auth/reset-password/:resetToken',
+    component: ResetPasswordComponent,
   },
   {
     path: 'auth/forgot-password',
@@ -32,7 +39,8 @@ const routes = [
   declarations: [
     SignUpComponent,
     SignInComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +52,9 @@ const routes = [
     ReactiveFormsModule,
     FormsModule,
     MatCardModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSnackBarModule,
+    MatAutocompleteModule,
   ]
 })
 export class AuthModule { }

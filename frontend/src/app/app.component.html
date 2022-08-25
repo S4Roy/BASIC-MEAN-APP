@@ -1,1 +1,33 @@
-<router-outlet></router-outlet>
+<div class="h-screen flex flex-col">
+    <header class="h-16">
+        <nav class="flex justify-between w-screen" *ngIf="user">
+            <ul class="list-none flex">
+                <li>
+                    <a class="block py-6 px-6 hover:text-white hover:bg-blue-600"
+                        [routerLink]="['/dashboard']">Dashboard</a>
+                </li>
+                <li>
+                    <a class="block py-6 px-6 hover:text-white hover:bg-blue-600" [routerLink]="['/my-profile']">My
+                        Profile</a>
+                </li>
+                <li>
+                    <a class="block py-6 px-6 hover:text-white hover:bg-blue-600"
+                        [routerLink]="['/change-password']">Change
+                        Password</a>
+                </li>
+            </ul>
+            <ul class="list-none flex">
+                <li>
+                    <a class="block py-6 px-6 cursor-pointer" (click)="logOut()" matTooltip="Click to logout">
+                        Log Out</a>
+                </li>
+
+            </ul>
+
+
+        </nav>
+    </header>
+    <section class="h-full sm:overflow-y-auto flex justify-center items-center">
+        <router-outlet></router-outlet>
+    </section>
+</div>

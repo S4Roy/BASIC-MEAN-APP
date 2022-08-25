@@ -1,79 +1,80 @@
-<div class="h-screen flex flex-col">
-    <header class="h-16">
-        <app-tool-bar></app-tool-bar>
-    </header>
-    <section class="h-full flex justify-center items-center">
-        <mat-card class="flex flex-col w-[40%] h-fit" [formGroup]="myProfile">
-            <div class=" flex justify-center mb-4">
-                <img class="rounded-full w-40 h-40 border drop-shadow" src="https://bit.ly/3CvuVyg" alt="">
-                <div class="absolute mt-28 ml-28">
-                    <button mat-mini-fab (click)="editProfile('profilePic')">
-                        <mat-icon>edit</mat-icon>
-                        <input type="file" style="display:none" id="profilePic"
-                            (change)="onFileSelect($event, 'profilePic')">
-                    </button>
-                </div>
-            </div>
-            <div class="flex">
-                <mat-form-field class="w-1/2" appearance="fill">
-                    <mat-label>First Name</mat-label>
-                    <input matInput [readonly]="!edit" type="text" formControlName="firstname">
-                    <mat-error *ngIf="myProfile.get('firstname')?.hasError('required')">
-                        First Name is Required
-                    </mat-error>
-                    <mat-error *ngIf="myProfile.get('firstname')?.hasError('pattern')">
-                        Invalid First Name
-                    </mat-error>
-                </mat-form-field>
-                <span class="mx-2"></span>
-                <mat-form-field class="w-1/2" appearance="fill">
-                    <mat-label>Last name</mat-label>
-                    <input matInput [readonly]="!edit" type="text" formControlName="lastname">
-                    <mat-error *ngIf="myProfile.get('lastname')?.hasError('required')">
-                        Last Name is Required
-                    </mat-error>
-                    <mat-error *ngIf="myProfile.get('lastname')?.hasError('pattern')">
-                        Invalid Last Name
-                    </mat-error>
-                </mat-form-field>
-            </div>
-            <mat-form-field class="w-full" appearance="fill">
-                <mat-label>Email</mat-label>
-                <input matInput [readonly]="!edit" type="text" formControlName="email">
-                <mat-error *ngIf="myProfile.get('email')?.hasError('required')">
-                    Email is Required
-                </mat-error>
-                <mat-error *ngIf="myProfile.get('email')?.hasError('email')">
-                    Invalid Email Address
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field class="w-full" appearance="fill">
-                <mat-label>Mobile</mat-label>
-                <input matInput [readonly]="!edit" type="text" formControlName="mobile">
-                <mat-error *ngIf="myProfile.get('mobile')?.hasError('required')">
-                    Mobile No. is Required
-                </mat-error>
-                <mat-error *ngIf="myProfile.get('mobile')?.hasError('minlength')">
-                    Invalid Mobile No.
-                </mat-error>
-                <mat-error *ngIf="myProfile.get('mobile')?.hasError('maxlength')">
-                    Invalid Mobile No.
-                </mat-error>
-            </mat-form-field>
-            <div class="flex">
-                <mat-form-field class="w-1/2" appearance="fill">
-                    <mat-label>Country</mat-label>
-                    <input matInput [readonly]="!edit" type="text" formControlName="country">
-                </mat-form-field>
-                <span class="mx-2"></span>
-                <mat-form-field class="w-1/2" appearance="fill">
-                    <mat-label>State</mat-label>
-                    <input matInput [readonly]="!edit" type="text" formControlName="state">
-                </mat-form-field>
-            </div>
+<mat-card class="flex flex-col h-fit" [formGroup]="myProfile">
+    <div class=" flex justify-center mb-4">
+        <img class="rounded-full w-40 h-40 border drop-shadow" [src]="fileUrl+profilePic" alt="">
+        <div class="absolute mt-28 ml-28">
+            <button mat-mini-fab color="primary" (click)="editProfile('profilePic')">
+                <mat-icon>edit</mat-icon>
+                <input type="file" style="display:none" id="profilePic" (change)="onFileSelect($event, 'profilePic')">
+            </button>
+        </div>
+    </div>
+    <div class="flex">
+        <mat-form-field class="w-1/2" appearance="fill">
+            <mat-label>First Name</mat-label>
+            <input matInput [readonly]="!edit" type="text" formControlName="firstname">
+            <mat-error *ngIf="myProfile.get('firstname')?.hasError('required')">
+                First Name is Required
+            </mat-error>
+            <mat-error *ngIf="myProfile.get('firstname')?.hasError('pattern')">
+                Invalid First Name
+            </mat-error>
+        </mat-form-field>
+        <span class="mx-2"></span>
+        <mat-form-field class="w-1/2" appearance="fill">
+            <mat-label>Last name</mat-label>
+            <input matInput [readonly]="!edit" type="text" formControlName="lastname">
+            <mat-error *ngIf="myProfile.get('lastname')?.hasError('required')">
+                Last Name is Required
+            </mat-error>
+            <mat-error *ngIf="myProfile.get('lastname')?.hasError('pattern')">
+                Invalid Last Name
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <mat-form-field class="w-full" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput [readonly]="!edit" type="text" formControlName="email">
+        <mat-error *ngIf="myProfile.get('email')?.hasError('required')">
+            Email is Required
+        </mat-error>
+        <mat-error *ngIf="myProfile.get('email')?.hasError('email')">
+            Invalid Email Address
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field class="w-full" appearance="fill">
+        <mat-label>Mobile</mat-label>
+        <input matInput [readonly]="!edit" type="text" formControlName="mobile">
+        <mat-error *ngIf="myProfile.get('mobile')?.hasError('required')">
+            Mobile No. is Required
+        </mat-error>
+        <mat-error *ngIf="myProfile.get('mobile')?.hasError('minlength')">
+            Invalid Mobile No.
+        </mat-error>
+        <mat-error *ngIf="myProfile.get('mobile')?.hasError('maxlength')">
+            Invalid Mobile No.
+        </mat-error>
+    </mat-form-field>
+    <div class="flex">
+        <mat-form-field class="w-1/2" appearance="fill">
+            <mat-label>Country</mat-label>
+            <input matInput (change)="onCountrySelect($event)" formControlName="country" name="country" list="countries"
+                autocomplete="off">
+            <datalist id="countries">
+                <option *ngFor="let country of countries" [value]="country">{{ country }}
+                </option>
+            </datalist>
+        </mat-form-field>
+        <span class="mx-2"></span>
+        <mat-form-field class="w-1/2" appearance="fill">
+            <mat-label>State</mat-label>
+            <input matInput formControlName="state" name="country" list="states" autocomplete="off">
+            <datalist id="states">
+                <option *ngFor="let state of states" [value]="state">{{ state }}
+                </option>
+            </datalist>
+        </mat-form-field>
+    </div>
 
-            <button mat-flat-button class="w-full h-11" [disabled]="myProfile.invalid" (click)="onSubmit()"
-                color="primary">Update Profile</button>
-        </mat-card>
-    </section>
-</div>
+    <button mat-flat-button class="w-full h-11" [disabled]="myProfile.invalid || !edit" (click)="onSubmit()"
+        color="primary">Update Profile</button>
+</mat-card>

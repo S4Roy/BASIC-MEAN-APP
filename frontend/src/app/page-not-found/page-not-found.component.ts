@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UtilsService } from '../services/utils.service';
 
 @Component({
   selector: 'app-page-not-found',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageNotFoundComponent implements OnInit {
 
-  constructor() { }
+  user;
+  constructor(private utils: UtilsService) {
+    this.user = this.utils.getUser()
+  }
 
   ngOnInit(): void {
   }

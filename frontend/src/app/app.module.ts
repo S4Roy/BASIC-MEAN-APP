@@ -7,6 +7,14 @@ import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { UserModule } from './user/user.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ApiService } from './services/api.service';
+import { TokenInterceptor } from './services/token.service';
+import { UtilsService } from './services/utils.service';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AuthGuard } from './auth.guard';
+import { DashboardComponent } from './user/dashboard/dashboard.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 const appRoutes: Routes = [
   //auth
@@ -32,8 +40,16 @@ const appRoutes: Routes = [
     AuthModule,
     UserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    MatSnackBarModule,
+    MatTooltipModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    AuthGuard,
+    ApiService,
+    UtilsService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

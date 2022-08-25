@@ -9,17 +9,27 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { ToolBarComponent } from './tool-bar/tool-bar.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { AuthGuard } from '../auth.guard';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const routes = [
   {
     path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'my-profile',
-    component: MyProfileComponent
+    component: MyProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'change-password',
+    component: ChangePasswordComponent,
+    canActivate: [AuthGuard]
   },
 
 ]
@@ -29,7 +39,7 @@ const routes = [
   declarations: [
     DashboardComponent,
     MyProfileComponent,
-    ToolBarComponent
+    ChangePasswordComponent
   ],
   imports: [
     CommonModule,
@@ -41,7 +51,11 @@ const routes = [
     ReactiveFormsModule,
     FormsModule,
     MatCardModule,
-    MatMenuModule
+    MatMenuModule,
+    MatProgressSpinnerModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatSnackBarModule
   ]
 })
 export class UserModule { }
