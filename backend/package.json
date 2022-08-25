@@ -1,0 +1,38 @@
+{
+  "name": "basic-mean-app",
+  "version": "1.0.0",
+  "description": "Basic Mean App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/S4Roy/BASIC-MEAN-APP.git"
+  },
+  "keywords": [
+    "basic",
+    "mean",
+    "app"
+  ],
+  "author": "Subhankar Roy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/S4Roy/BASIC-MEAN-APP/issues"
+  },
+  "homepage": "https://github.com/S4Roy/BASIC-MEAN-APP#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.19",
+    "uuid": "^8.3.2"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
+    "mongoose": "^5.11.18",
+    "nodemailer": "^6.7.2"
+  }
+}
