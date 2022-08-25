@@ -31,6 +31,11 @@ const routes = [
     component: ChangePasswordComponent,
     canActivate: [AuthGuard]
   },
+  {
+    path: '',
+    component: DashboardComponent,
+    canActivate: [AuthGuard]
+  },
 
 ]
 
